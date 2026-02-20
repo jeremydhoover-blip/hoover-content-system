@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoover Content System | Content Context for AI and Teams</title>
+  <meta name="description" content="87 structured skills for marketing, editorial, docs, UX, and more. Built on Content Context—the missing layer in your content stack.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --accent: #2563eb;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+    
+    /* Sections */
+    section {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    
+    section h3 {
+      font-size: 1.125rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    section p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    
+    /* Problem */
+    .problem-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+    
+    .problem-list li {
+      padding: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    
+    .problem-list li strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    
+    /* Content Context */
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    .context-item {
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    
+    .context-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    
+    .context-item span {
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+    
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    
+    .skill-category {
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    
+    .skill-category h3 {
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .skill-category p {
+      font-size: 0.875rem;
+      margin: 0;
+    }
+    
+    .skill-count {
+      display: inline-block;
+      background: var(--bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    
+    /* How it works */
+    .steps {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    
+    .step-content h3 {
+      color: var(--text);
+    }
+    
+    .step-content p {
+      margin: 0;
+    }
+    
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    
+    .service {
+      padding: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    
+    .service h3 {
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .service p {
+      margin: 0;
+    }
+    
+    /* Contact */
+    .contact-section {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 60px 24px;
+      border-radius: 12px;
+      margin: 60px 0;
+      border: 1px solid var(--border);
+    }
+    
+    .contact-section h2 {
+      margin-bottom: 16px;
+    }
+    
+    .contact-section p {
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+    
+    /* About */
+    .about {
+      display: flex;
+      gap: 24px;
+      align-items: start;
+      margin-top: 24px;
+    }
+    
+    .about-text p {
+      margin-bottom: 12px;
+    }
+    
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    footer p {
+      margin-bottom: 8px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.875rem; }
+      .hero .subtitle { font-size: 1.1rem; }
+      section { padding: 40px 0; }
+      .step { grid-template-columns: 40px 1fr; }
+      .step-number { width: 40px; height: 40px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Hoover Content System</h1>
+      <p class="subtitle">87 structured skills for marketing, editorial, docs, UX, and more. Built on Content Context—the missing layer in your content stack.</p>
+      <div class="cta-group">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system" class="btn btn-primary">View on GitHub</a>
+        <a href="#contact" class="btn btn-secondary">Work With Me</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem -->
+  <section>
+    <div class="container">
+      <h2>Content is broken everywhere</h2>
+      <p>Every team that works with words has the same problems:</p>
+      <ul class="problem-list">
+        <li><strong>Inconsistency at scale</strong>Marketing says one thing, the product says another, docs say something else.</li>
+        <li><strong>AI makes it worse</strong>Now you produce inconsistent content faster.</li>
+        <li><strong>No shared system</strong>Writers reinvent the wheel. Stakeholders debate subjective preferences. Nothing compounds.</li>
+        <li><strong>Context lives in people's heads</strong>When someone leaves, their knowledge leaves too.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Content Context -->
+  <section>
+    <div class="container">
+      <h2>The innovation: Content Context</h2>
+      <p>Content Context is structured, feature-level knowledge that must exist before any content is written. It's the missing layer between strategy and execution.</p>
+      <p>This concept doesn't exist in the market yet. I formalized it after 15 years of seeing the same failure pattern across marketing, journalism, communications, and product content.</p>
+      <div class="context-grid">
+        <div class="context-item"><strong>Feature purpose</strong><span>Why this exists</span></div>
+        <div class="context-item"><strong>User goals</strong><span>What they're trying to do</span></div>
+        <div class="context-item"><strong>States & transitions</strong><span>Every UI state possible</span></div>
+        <div class="context-item"><strong>Error taxonomy</strong><span>Every failure mode</span></div>
+        <div class="context-item"><strong>Vocabulary</strong><span>Required & forbidden terms</span></div>
+        <div class="context-item"><strong>Tone boundaries</strong><span>What's allowed, what's not</span></div>
+        <div class="context-item"><strong>Constraints</strong><span>Legal, compliance, accessibility</span></div>
+        <div class="context-item"><strong>Success metrics</strong><span>How we measure impact</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <div class="container">
+      <h2>87 skills across 10 disciplines</h2>
+      <p>Every skill includes decision logic, workflows, rubrics, and real examples. Not templates—thinking frameworks.</p>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Marketing</h3>
+          <p>Landing pages, email sequences, product launches, ad copy</p>
+          <span class="skill-count">9 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Editorial</h3>
+          <p>Blog posts, case studies, headlines, long-form content</p>
+          <span class="skill-count">8 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Content Strategy</h3>
+          <p>Voice & tone, messaging hierarchy, taxonomy, roadmaps</p>
+          <span class="skill-count">9 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Technical Docs</h3>
+          <p>API docs, release notes, troubleshooting guides</p>
+          <span class="skill-count">9 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Developer Content</h3>
+          <p>CLI help, SDK docs, code comments, tutorials</p>
+          <span class="skill-count">8 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>UX Writing</h3>
+          <p>Error messages, CTAs, onboarding, tooltips</p>
+          <span class="skill-count">11 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Content Context</h3>
+          <p>Context packs, state maps, vocabulary, versioning</p>
+          <span class="skill-count">8 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Content Design</h3>
+          <p>Microcopy systems, progressive disclosure, governance</p>
+          <span class="skill-count">9 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>Research & Insights</h3>
+          <p>Feedback synthesis, user research, opportunity mapping</p>
+          <span class="skill-count">8 skills</span>
+        </div>
+        <div class="skill-category">
+          <h3>MCP & Agents</h3>
+          <p>AI tool descriptions, system prompts, agent design</p>
+          <span class="skill-count">8 skills</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section>
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Create Content Context</h3>
+            <p>Capture the structured knowledge for your feature, product, or campaign. Use the Content Context skills to build a context pack.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Choose a skill</h3>
+            <p>Pick the skill that matches your task—error message, landing page, API docs, whatever. Each skill has a workflow, templates, and rubric.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Generate and evaluate</h3>
+            <p>Use the skill with AI or write manually. Evaluate the output against the rubric. Iterate until it passes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Scale consistently</h3>
+            <p>Same context, same skills, same rubrics—every time. Content compounds instead of fragmenting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section>
+    <div class="container">
+      <h2>15 years of content experience, encoded</h2>
+      <div class="about">
+        <div class="about-text">
+          <p>I've spent 15 years working across marketing, journalism, communications, technical writing, and product content. The pattern is always the same: content fails because there's no system.</p>
+          <p>HCS is what I wish existed when I started. It's the decision-making framework I've built and rebuilt at every company, for every team, now open-sourced for everyone.</p>
+          <p>Content Context—the core innovation—is something I've never seen formalized anywhere else. It's the structured knowledge layer that makes everything else work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section>
+    <div class="container">
+      <h2>Work with me</h2>
+      <p>The system is free and open source. Implementation is where I help.</p>
+      <div class="services-grid">
+        <div class="service">
+          <h3>Workshops</h3>
+          <p>60-90 minute sessions teaching your team how to build Content Context packs and use skills effectively. Remote or on-site.</p>
+        </div>
+        <div class="service">
+          <h3>Custom Skills</h3>
+          <p>Your product has unique constraints. I'll build skills tailored to your voice, your features, your compliance requirements.</p>
+        </div>
+        <div class="service">
+          <h3>Consultation</h3>
+          <p>Ongoing support to help content teams scale systematically. Content audits, system design, AI integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div class="container">
+    <div class="contact-section" id="contact">
+      <h2>Let's talk</h2>
+      <p>Whether you want a workshop, custom skills, or just have questions about the system—I'd love to hear from you.</p>
+      <a href="https://www.linkedin.com/in/jeremydhoover/" class="btn btn-primary">Connect on LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Hoover Content System is <a href="https://github.com/jeremydhoover-blip/hoover-content-system">open source</a> under MIT license.</p>
+      <p>Built by Jeremy Hoover</p>
+    </div>
+  </footer>
+
+</body>
+</html>
