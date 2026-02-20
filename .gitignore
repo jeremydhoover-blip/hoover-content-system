@@ -1,0 +1,40 @@
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cursor/
+
+# Node (if using validation scripts)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Python (if using validation scripts)
+__pycache__/
+*.py[cod]
+.env
+.env.local
+venv/
+.venv/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Secrets (never commit these)
+*.pem
+*.key
+secrets.json
+.secrets

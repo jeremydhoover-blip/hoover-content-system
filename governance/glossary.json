@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "description": "Canonical terms, prohibited synonyms, and product vocabulary for all content outputs.",
+  "usage": {
+    "scope": "All skills reference this file for terminology consistency.",
+    "rules": [
+      "Use canonical term in all outputs.",
+      "Prohibited terms trigger validation failure.",
+      "Context determines which term set applies."
+    ]
+  },
+  "terms": {
+    "ui-actions": {
+      "select": {
+        "canonical": "select",
+        "prohibited": ["choose", "pick", "check"],
+        "context": "Choosing from a list or dropdown"
+      },
+      "click": {
+        "canonical": "click",
+        "prohibited": ["tap", "press", "hit"],
+        "context": "Mouse interaction on desktop"
+      },
+      "tap": {
+        "canonical": "tap",
+        "prohibited": ["click", "press", "touch"],
+        "context": "Touch interaction on mobile"
+      },
+      "enter": {
+        "canonical": "enter",
+        "prohibited": ["type", "input", "key in"],
+        "context": "Typing text into a field"
+      },
+      "sign-in": {
+        "canonical": "sign in",
+        "prohibited": ["log in", "login", "sign on"],
+        "context": "Authentication action"
+      },
+      "sign-out": {
+        "canonical": "sign out",
+        "prohibited": ["log out", "logout", "sign off"],
+        "context": "End session action"
+      }
+    },
+    "system-states": {
+      "error": {
+        "canonical": "error",
+        "prohibited": ["failure", "fault", "problem"],
+        "context": "System or user-caused failure"
+      },
+      "warning": {
+        "canonical": "warning",
+        "prohibited": ["caution", "alert", "notice"],
+        "context": "Potential issue, not blocking"
+      },
+      "success": {
+        "canonical": "success",
+        "prohibited": ["done", "complete", "finished"],
+        "context": "Action completed successfully"
+      },
+      "loading": {
+        "canonical": "loading",
+        "prohibited": ["fetching", "retrieving", "getting"],
+        "context": "Data being retrieved"
+      },
+      "saving": {
+        "canonical": "saving",
+        "prohibited": ["storing", "writing", "updating"],
+        "context": "Data being persisted"
+      }
+    },
+    "content-elements": {
+      "button": {
+        "canonical": "button",
+        "prohibited": ["btn", "control", "action"],
+        "context": "Clickable UI element"
+      },
+      "dialog": {
+        "canonical": "dialog",
+        "prohibited": ["modal", "popup", "overlay", "pop-up"],
+        "context": "Overlay requiring user response"
+      },
+      "tooltip": {
+        "canonical": "tooltip",
+        "prohibited": ["hint", "tip", "hover text"],
+        "context": "Contextual help on hover"
+      },
+      "dropdown": {
+        "canonical": "dropdown",
+        "prohibited": ["drop-down", "select box", "pulldown", "combo box"],
+        "context": "Expandable selection list"
+      },
+      "checkbox": {
+        "canonical": "checkbox",
+        "prohibited": ["check box", "tick box", "selector"],
+        "context": "Multi-select toggle"
+      },
+      "text-field": {
+        "canonical": "text field",
+        "prohibited": ["text box", "input field", "input box", "text input"],
+        "context": "Single-line text entry"
+      }
+    },
+    "data-actions": {
+      "delete": {
+        "canonical": "delete",
+        "prohibited": ["remove", "erase", "destroy"],
+        "context": "Permanent data removal"
+      },
+      "remove": {
+        "canonical": "remove",
+        "prohibited": ["delete", "take out", "clear"],
+        "context": "Non-destructive removal from view or list"
+      },
+      "create": {
+        "canonical": "create",
+        "prohibited": ["make", "add new", "generate"],
+        "context": "Making something new"
+      },
+      "edit": {
+        "canonical": "edit",
+        "prohibited": ["modify", "change", "update"],
+        "context": "Changing existing content"
+      },
+      "save": {
+        "canonical": "save",
+        "prohibited": ["store", "keep", "commit"],
+        "context": "Persisting changes"
+      },
+      "cancel": {
+        "canonical": "cancel",
+        "prohibited": ["abort", "stop", "quit", "exit"],
+        "context": "Abandoning current action"
+      }
+    },
+    "navigation": {
+      "go-to": {
+        "canonical": "go to",
+        "prohibited": ["navigate to", "visit", "open"],
+        "context": "Moving to another location"
+      },
+      "back": {
+        "canonical": "back",
+        "prohibited": ["return", "go back", "previous"],
+        "context": "Return to prior state"
+      },
+      "next": {
+        "canonical": "next",
+        "prohibited": ["continue", "proceed", "forward"],
+        "context": "Advance in sequence"
+      },
+      "home": {
+        "canonical": "home",
+        "prohibited": ["main", "start", "landing"],
+        "context": "Primary entry point"
+      }
+    }
+  },
+  "product_terms": {
+    "_comment": "Add product-specific terms here. Format: term-key with canonical, prohibited, and context."
+  },
+  "voice_attributes": {
+    "_comment": "Define product voice attributes here. Format: attribute name with definition and contrast.",
+    "example": {
+      "attribute": "Clear",
+      "definition": "We use plain language and get to the point.",
+      "contrast": "Clear, not clever."
+    }
+  }
+}

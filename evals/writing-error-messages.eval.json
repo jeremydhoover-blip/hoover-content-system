@@ -1,0 +1,118 @@
+{
+  "skill": "skills/ux-writing/writing-error-messages",
+  "version": "1.0",
+  "cases": [
+    {
+      "id": "validation-empty-required-field",
+      "description": "User submits form with empty required email field",
+      "input": {
+        "error_type": "validation",
+        "severity": "blocking",
+        "user_action": "Submitted signup form",
+        "trigger": "Email field left empty",
+        "recovery_actions": ["Focus email field", "Show inline validation"]
+      },
+      "expected": {
+        "title": "Enter your email address",
+        "body": null,
+        "action": "Enter email"
+      },
+      "rubric_checks": [
+        "title_under_60_chars",
+        "no_user_blame",
+        "action_is_actionable",
+        "no_technical_jargon"
+      ]
+    },
+    {
+      "id": "system-server-unavailable",
+      "description": "Server returns 503 during checkout",
+      "input": {
+        "error_type": "system",
+        "severity": "blocking",
+        "user_action": "Clicked Place Order",
+        "trigger": "Service unavailable (503)",
+        "recovery_actions": ["Retry", "Contact support"]
+      },
+      "expected": {
+        "title": "Unable to complete your order",
+        "body": "Our servers are temporarily unavailable. Your cart has been saved.",
+        "action": "Try again"
+      },
+      "rubric_checks": [
+        "title_under_60_chars",
+        "body_under_150_chars",
+        "no_error_codes_exposed",
+        "recovery_path_provided",
+        "reassurance_included"
+      ]
+    },
+    {
+      "id": "network-offline",
+      "description": "User attempts action while offline",
+      "input": {
+        "error_type": "network",
+        "severity": "blocking",
+        "user_action": "Tried to save document",
+        "trigger": "No network connection",
+        "recovery_actions": ["Reconnect", "Work offline"]
+      },
+      "expected": {
+        "title": "You're offline",
+        "body": "Check your internet connection and try again.",
+        "action": "Retry"
+      },
+      "rubric_checks": [
+        "title_under_60_chars",
+        "clear_cause_stated",
+        "action_is_actionable"
+      ]
+    },
+    {
+      "id": "permission-denied",
+      "description": "User tries to access resource without permission",
+      "input": {
+        "error_type": "permission",
+        "severity": "blocking",
+        "user_action": "Opened shared folder",
+        "trigger": "Access denied by owner",
+        "recovery_actions": ["Request access", "Go back"]
+      },
+      "expected": {
+        "title": "You don't have access to this folder",
+        "body": "Ask the owner for permission to view it.",
+        "action": "Request access"
+      },
+      "rubric_checks": [
+        "title_under_60_chars",
+        "no_user_blame",
+        "clear_next_step"
+      ]
+    },
+    {
+      "id": "not-found-deleted-file",
+      "description": "User opens link to deleted file",
+      "input": {
+        "error_type": "not-found",
+        "severity": "blocking",
+        "user_action": "Clicked shared link",
+        "trigger": "File no longer exists",
+        "recovery_actions": ["Go to home", "Contact file owner"]
+      },
+      "expected": {
+        "title": "This file doesn't exist",
+        "body": "It may have been deleted or moved.",
+        "action": "Go to home"
+      },
+      "rubric_checks": [
+        "title_under_60_chars",
+        "body_explains_possible_cause",
+        "graceful_fallback_provided"
+      ]
+    }
+  ],
+  "grading": {
+    "pass_threshold": "all_rubric_checks_pass",
+    "partial_credit": false
+  }
+}
