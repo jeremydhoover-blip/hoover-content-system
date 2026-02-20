@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills Catalog | Hoover Content System</title>
+  <meta name="description" content="Complete catalog of 80+ structured content skills for marketing, UX, technical docs, developer content, and more.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --accent-dark: #1d4ed8;
+      --secondary: #8b5cf6;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      --gradient-subtle: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Top Navigation */
+    .top-nav {
+      background: var(--gradient-primary);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .top-nav .container {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    
+    .top-nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 0 20px;
+      border-right: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    .top-nav a:last-child {
+      border-right: none;
+    }
+    
+    .top-nav a:hover {
+      color: white;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 60px 0 50px;
+      text-align: center;
+      background: var(--gradient-primary);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .hero .subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Category Navigation */
+    .category-nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      position: sticky;
+      top: 48px;
+      z-index: 99;
+      overflow-x: auto;
+    }
+    
+    .category-nav .container {
+      display: flex;
+      gap: 8px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    
+    .category-nav a {
+      padding: 8px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    
+    .category-nav a:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    
+    /* Category Section */
+    .category-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .category-section:nth-child(odd) {
+      background: var(--card-bg);
+    }
+    
+    .category-section:nth-child(even) {
+      background: var(--gradient-subtle);
+    }
+    
+    .category-header {
+      margin-bottom: 32px;
+    }
+    
+    .category-header h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .category-header h2 .count {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .category-header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    
+    /* Skills List */
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    
+    .skill-item {
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .skill-item:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    
+    .skill-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    
+    .skill-item .skill-path {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 48px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background: var(--text);
+    }
+    
+    footer a {
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    footer a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    
+    footer p {
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.7);
+    }
+    
+    /* Floating GitHub Button */
+    .floating-github {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 56px;
+      height: 56px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .floating-github.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .floating-github:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.4);
+    }
+
+    .floating-github svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.75rem; }
+      .hero .subtitle { font-size: 1rem; }
+      .hero { padding: 40px 0 30px; }
+      .category-section { padding: 40px 0; }
+      .category-header h2 { font-size: 1.4rem; }
+      .skills-list { grid-template-columns: 1fr; }
+      .floating-github { bottom: 20px; right: 20px; width: 48px; height: 48px; }
+      .floating-github svg { width: 24px; height: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#services">Work With Me</a>
+      <a href="https://github.com/jeremydhoover-blip/hoover-content-system">GitHub</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Skills Catalog</h1>
+      <p class="subtitle">Complete list of 80+ structured content skills organized by discipline. Each skill includes decision logic, workflows, rubrics, and real examples.</p>
+    </div>
+  </header>
+
+  <!-- Category Navigation -->
+  <nav class="category-nav">
+    <div class="container">
+      <a href="#ux-writing">UX Writing</a>
+      <a href="#content-design">Content Design</a>
+      <a href="#content-strategy">Content Strategy</a>
+      <a href="#content-context">Content Context</a>
+      <a href="#technical-documentation">Technical Docs</a>
+      <a href="#developer-content">Developer Content</a>
+      <a href="#mcp-and-agents">MCP & Agents</a>
+      <a href="#marketing">Marketing</a>
+      <a href="#editorial-and-blog">Editorial</a>
+      <a href="#research-and-insights">Research</a>
+    </div>
+  </nav>
+
+  <!-- UX Writing -->
+  <section class="category-section" id="ux-writing">
+    <div class="container">
+      <div class="category-header">
+        <h2>UX Writing <span class="count">11 skills</span></h2>
+        <p>Error messages, empty states, onboarding, tooltips, and all user-facing microcopy</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-error-messages" class="skill-item">
+          <h3>Writing Error Messages</h3>
+          <span class="skill-path">skills/ux-writing/writing-error-messages</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-empty-states" class="skill-item">
+          <h3>Writing Empty States</h3>
+          <span class="skill-path">skills/ux-writing/writing-empty-states</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-confirmation-dialogs" class="skill-item">
+          <h3>Writing Confirmation Dialogs</h3>
+          <span class="skill-path">skills/ux-writing/writing-confirmation-dialogs</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-onboarding-steps" class="skill-item">
+          <h3>Writing Onboarding Steps</h3>
+          <span class="skill-path">skills/ux-writing/writing-onboarding-steps</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-settings-and-preferences" class="skill-item">
+          <h3>Writing Settings and Preferences</h3>
+          <span class="skill-path">skills/ux-writing/writing-settings-and-preferences</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-status-and-progress" class="skill-item">
+          <h3>Writing Status and Progress</h3>
+          <span class="skill-path">skills/ux-writing/writing-status-and-progress</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-form-labels-and-helptext" class="skill-item">
+          <h3>Writing Form Labels and Help Text</h3>
+          <span class="skill-path">skills/ux-writing/writing-form-labels-and-helptext</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-permission-and-access-messages" class="skill-item">
+          <h3>Writing Permission and Access Messages</h3>
+          <span class="skill-path">skills/ux-writing/writing-permission-and-access-messages</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-loading-and-latency-messaging" class="skill-item">
+          <h3>Writing Loading and Latency Messaging</h3>
+          <span class="skill-path">skills/ux-writing/writing-loading-and-latency-messaging</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-notifications-and-toasts" class="skill-item">
+          <h3>Writing Notifications and Toasts</h3>
+          <span class="skill-path">skills/ux-writing/writing-notifications-and-toasts</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/ux-writing/writing-accessible-ui-copy" class="skill-item">
+          <h3>Writing Accessible UI Copy</h3>
+          <span class="skill-path">skills/ux-writing/writing-accessible-ui-copy</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Design -->
+  <section class="category-section" id="content-design">
+    <div class="container">
+      <div class="category-header">
+        <h2>Content Design <span class="count">9 skills</span></h2>
+        <p>Microcopy systems, progressive disclosure, pattern libraries, and content governance</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/auditing-ui-copy" class="skill-item">
+          <h3>Auditing UI Copy</h3>
+          <span class="skill-path">skills/content-design/auditing-ui-copy</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/designing-microcopy-systems" class="skill-item">
+          <h3>Designing Microcopy Systems</h3>
+          <span class="skill-path">skills/content-design/designing-microcopy-systems</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/naming-features-and-settings" class="skill-item">
+          <h3>Naming Features and Settings</h3>
+          <span class="skill-path">skills/content-design/naming-features-and-settings</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/structuring-ui-content" class="skill-item">
+          <h3>Structuring UI Content</h3>
+          <span class="skill-path">skills/content-design/structuring-ui-content</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/reducing-cognitive-load" class="skill-item">
+          <h3>Reducing Cognitive Load</h3>
+          <span class="skill-path">skills/content-design/reducing-cognitive-load</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/designing-progressive-disclosure" class="skill-item">
+          <h3>Designing Progressive Disclosure</h3>
+          <span class="skill-path">skills/content-design/designing-progressive-disclosure</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/designing-content-pattern-libraries" class="skill-item">
+          <h3>Designing Content Pattern Libraries</h3>
+          <span class="skill-path">skills/content-design/designing-content-pattern-libraries</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/mapping-user-intents-to-copy" class="skill-item">
+          <h3>Mapping User Intents to Copy</h3>
+          <span class="skill-path">skills/content-design/mapping-user-intents-to-copy</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-design/designing-content-governance-flows" class="skill-item">
+          <h3>Designing Content Governance Flows</h3>
+          <span class="skill-path">skills/content-design/designing-content-governance-flows</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Strategy -->
+  <section class="category-section" id="content-strategy">
+    <div class="container">
+      <div class="category-header">
+        <h2>Content Strategy <span class="count">9 skills</span></h2>
+        <p>Voice and tone, messaging hierarchy, taxonomy, content principles, and roadmaps</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/defining-voice-and-tone" class="skill-item">
+          <h3>Defining Voice and Tone</h3>
+          <span class="skill-path">skills/content-strategy/defining-voice-and-tone</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/creating-content-principles" class="skill-item">
+          <h3>Creating Content Principles</h3>
+          <span class="skill-path">skills/content-strategy/creating-content-principles</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/building-taxonomy-and-ia" class="skill-item">
+          <h3>Building Taxonomy and IA</h3>
+          <span class="skill-path">skills/content-strategy/building-taxonomy-and-ia</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/creating-messaging-hierarchy" class="skill-item">
+          <h3>Creating Messaging Hierarchy</h3>
+          <span class="skill-path">skills/content-strategy/creating-messaging-hierarchy</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/planning-content-roadmaps" class="skill-item">
+          <h3>Planning Content Roadmaps</h3>
+          <span class="skill-path">skills/content-strategy/planning-content-roadmaps</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/measuring-content-performance" class="skill-item">
+          <h3>Measuring Content Performance</h3>
+          <span class="skill-path">skills/content-strategy/measuring-content-performance</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/designing-content-experiments" class="skill-item">
+          <h3>Designing Content Experiments</h3>
+          <span class="skill-path">skills/content-strategy/designing-content-experiments</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/aligning-content-with-brand" class="skill-item">
+          <h3>Aligning Content with Brand</h3>
+          <span class="skill-path">skills/content-strategy/aligning-content-with-brand</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-strategy/creating-content-briefs" class="skill-item">
+          <h3>Creating Content Briefs</h3>
+          <span class="skill-path">skills/content-strategy/creating-content-briefs</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Context -->
+  <section class="category-section" id="content-context">
+    <div class="container">
+      <div class="category-header">
+        <h2>Content Context <span class="count">8 skills</span></h2>
+        <p>Context packs, state maps, feature vocabulary, and versioning for AI-native workflows</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/generating-feature-content-context" class="skill-item">
+          <h3>Generating Feature Content Context</h3>
+          <span class="skill-path">skills/content-context/generating-feature-content-context</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/updating-feature-context-from-feedback" class="skill-item">
+          <h3>Updating Feature Context from Feedback</h3>
+          <span class="skill-path">skills/content-context/updating-feature-context-from-feedback</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/generating-state-maps" class="skill-item">
+          <h3>Generating State Maps</h3>
+          <span class="skill-path">skills/content-context/generating-state-maps</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/mapping-content-to-user-journeys" class="skill-item">
+          <h3>Mapping Content to User Journeys</h3>
+          <span class="skill-path">skills/content-context/mapping-content-to-user-journeys</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/defining-feature-vocabulary" class="skill-item">
+          <h3>Defining Feature Vocabulary</h3>
+          <span class="skill-path">skills/content-context/defining-feature-vocabulary</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/creating-context-packs-for-ai" class="skill-item">
+          <h3>Creating Context Packs for AI</h3>
+          <span class="skill-path">skills/content-context/creating-context-packs-for-ai</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/validating-context-completeness" class="skill-item">
+          <h3>Validating Context Completeness</h3>
+          <span class="skill-path">skills/content-context/validating-context-completeness</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/content-context/diffing-and-versioning-context-packs" class="skill-item">
+          <h3>Diffing and Versioning Context Packs</h3>
+          <span class="skill-path">skills/content-context/diffing-and-versioning-context-packs</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Documentation -->
+  <section class="category-section" id="technical-documentation">
+    <div class="container">
+      <div class="category-header">
+        <h2>Technical Documentation <span class="count">9 skills</span></h2>
+        <p>How-to guides, API docs, release notes, troubleshooting, and docs-as-code</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/writing-how-to-guides" class="skill-item">
+          <h3>Writing How-To Guides</h3>
+          <span class="skill-path">skills/technical-documentation/writing-how-to-guides</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/writing-reference-docs" class="skill-item">
+          <h3>Writing Reference Docs</h3>
+          <span class="skill-path">skills/technical-documentation/writing-reference-docs</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/writing-troubleshooting-guides" class="skill-item">
+          <h3>Writing Troubleshooting Guides</h3>
+          <span class="skill-path">skills/technical-documentation/writing-troubleshooting-guides</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/writing-api-documentation" class="skill-item">
+          <h3>Writing API Documentation</h3>
+          <span class="skill-path">skills/technical-documentation/writing-api-documentation</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/writing-release-notes" class="skill-item">
+          <h3>Writing Release Notes</h3>
+          <span class="skill-path">skills/technical-documentation/writing-release-notes</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/maintaining-docs-as-code" class="skill-item">
+          <h3>Maintaining Docs as Code</h3>
+          <span class="skill-path">skills/technical-documentation/maintaining-docs-as-code</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/structuring-doc-information-architecture" class="skill-item">
+          <h3>Structuring Doc Information Architecture</h3>
+          <span class="skill-path">skills/technical-documentation/structuring-doc-information-architecture</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/documenting-breaking-changes" class="skill-item">
+          <h3>Documenting Breaking Changes</h3>
+          <span class="skill-path">skills/technical-documentation/documenting-breaking-changes</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/technical-documentation/designing-documentation-navigation" class="skill-item">
+          <h3>Designing Documentation Navigation</h3>
+          <span class="skill-path">skills/technical-documentation/designing-documentation-navigation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer Content -->
+  <section class="category-section" id="developer-content">
+    <div class="container">
+      <div class="category-header">
+        <h2>Developer Content <span class="count">8 skills</span></h2>
+        <p>SDK docs, CLI help, code comments, tutorials, and developer onboarding</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/writing-sdk-docs-and-samples" class="skill-item">
+          <h3>Writing SDK Docs and Samples</h3>
+          <span class="skill-path">skills/developer-content/writing-sdk-docs-and-samples</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/writing-cli-help-and-usage" class="skill-item">
+          <h3>Writing CLI Help and Usage</h3>
+          <span class="skill-path">skills/developer-content/writing-cli-help-and-usage</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/writing-cli-errors-and-exit-codes" class="skill-item">
+          <h3>Writing CLI Errors and Exit Codes</h3>
+          <span class="skill-path">skills/developer-content/writing-cli-errors-and-exit-codes</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/writing-command-tutorial-flows" class="skill-item">
+          <h3>Writing Command Tutorial Flows</h3>
+          <span class="skill-path">skills/developer-content/writing-command-tutorial-flows</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/writing-code-comments-and-docstrings" class="skill-item">
+          <h3>Writing Code Comments and Docstrings</h3>
+          <span class="skill-path">skills/developer-content/writing-code-comments-and-docstrings</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/designing-developer-onboarding" class="skill-item">
+          <h3>Designing Developer Onboarding</h3>
+          <span class="skill-path">skills/developer-content/designing-developer-onboarding</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/writing-configuration-guides" class="skill-item">
+          <h3>Writing Configuration Guides</h3>
+          <span class="skill-path">skills/developer-content/writing-configuration-guides</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/developer-content/documenting-tooling-workflows" class="skill-item">
+          <h3>Documenting Tooling Workflows</h3>
+          <span class="skill-path">skills/developer-content/documenting-tooling-workflows</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MCP & Agents -->
+  <section class="category-section" id="mcp-and-agents">
+    <div class="container">
+      <div class="category-header">
+        <h2>MCP & Agents <span class="count">8 skills</span></h2>
+        <p>AI tool descriptions, system prompts, agent workflows, guardrails, and evaluations</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/writing-mcp-tool-descriptions" class="skill-item">
+          <h3>Writing MCP Tool Descriptions</h3>
+          <span class="skill-path">skills/mcp-and-agents/writing-mcp-tool-descriptions</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/designing-agent-instructions" class="skill-item">
+          <h3>Designing Agent Instructions</h3>
+          <span class="skill-path">skills/mcp-and-agents/designing-agent-instructions</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/designing-agent-workflows" class="skill-item">
+          <h3>Designing Agent Workflows</h3>
+          <span class="skill-path">skills/mcp-and-agents/designing-agent-workflows</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/designing-evaluations-for-agents" class="skill-item">
+          <h3>Designing Evaluations for Agents</h3>
+          <span class="skill-path">skills/mcp-and-agents/designing-evaluations-for-agents</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/defining-guardrails-and-constraints" class="skill-item">
+          <h3>Defining Guardrails and Constraints</h3>
+          <span class="skill-path">skills/mcp-and-agents/defining-guardrails-and-constraints</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/designing-context-injection-patterns" class="skill-item">
+          <h3>Designing Context Injection Patterns</h3>
+          <span class="skill-path">skills/mcp-and-agents/designing-context-injection-patterns</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/auditing-agent-behavior" class="skill-item">
+          <h3>Auditing Agent Behavior</h3>
+          <span class="skill-path">skills/mcp-and-agents/auditing-agent-behavior</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/mcp-and-agents/structuring-system-prompts" class="skill-item">
+          <h3>Structuring System Prompts</h3>
+          <span class="skill-path">skills/mcp-and-agents/structuring-system-prompts</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing -->
+  <section class="category-section" id="marketing">
+    <div class="container">
+      <div class="category-header">
+        <h2>Marketing <span class="count">9 skills</span></h2>
+        <p>Landing pages, email campaigns, product messaging, announcements, and conversion copy</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-product-messaging" class="skill-item">
+          <h3>Writing Product Messaging</h3>
+          <span class="skill-path">skills/marketing/writing-product-messaging</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-landing-pages" class="skill-item">
+          <h3>Writing Landing Pages</h3>
+          <span class="skill-path">skills/marketing/writing-landing-pages</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-email-campaigns" class="skill-item">
+          <h3>Writing Email Campaigns</h3>
+          <span class="skill-path">skills/marketing/writing-email-campaigns</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-product-announcements" class="skill-item">
+          <h3>Writing Product Announcements</h3>
+          <span class="skill-path">skills/marketing/writing-product-announcements</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-app-store-listings" class="skill-item">
+          <h3>Writing App Store Listings</h3>
+          <span class="skill-path">skills/marketing/writing-app-store-listings</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/creating-message-maps" class="skill-item">
+          <h3>Creating Message Maps</h3>
+          <span class="skill-path">skills/marketing/creating-message-maps</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-social-media-content" class="skill-item">
+          <h3>Writing Social Media Content</h3>
+          <span class="skill-path">skills/marketing/writing-social-media-content</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/writing-sales-enablement-content" class="skill-item">
+          <h3>Writing Sales Enablement Content</h3>
+          <span class="skill-path">skills/marketing/writing-sales-enablement-content</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/marketing/designing-conversion-copy" class="skill-item">
+          <h3>Designing Conversion Copy</h3>
+          <span class="skill-path">skills/marketing/designing-conversion-copy</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial & Blog -->
+  <section class="category-section" id="editorial-and-blog">
+    <div class="container">
+      <div class="category-header">
+        <h2>Editorial & Blog <span class="count">8 skills</span></h2>
+        <p>Blog posts, case studies, thought leadership, headlines, and long-form content</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/writing-blog-posts" class="skill-item">
+          <h3>Writing Blog Posts</h3>
+          <span class="skill-path">skills/editorial-and-blog/writing-blog-posts</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/writing-case-studies" class="skill-item">
+          <h3>Writing Case Studies</h3>
+          <span class="skill-path">skills/editorial-and-blog/writing-case-studies</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/editing-and-style-enforcement" class="skill-item">
+          <h3>Editing and Style Enforcement</h3>
+          <span class="skill-path">skills/editorial-and-blog/editing-and-style-enforcement</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/writing-thought-leadership" class="skill-item">
+          <h3>Writing Thought Leadership</h3>
+          <span class="skill-path">skills/editorial-and-blog/writing-thought-leadership</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/writing-tutorial-articles" class="skill-item">
+          <h3>Writing Tutorial Articles</h3>
+          <span class="skill-path">skills/editorial-and-blog/writing-tutorial-articles</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/structuring-long-form-content" class="skill-item">
+          <h3>Structuring Long-Form Content</h3>
+          <span class="skill-path">skills/editorial-and-blog/structuring-long-form-content</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/designing-headline-variants" class="skill-item">
+          <h3>Designing Headline Variants</h3>
+          <span class="skill-path">skills/editorial-and-blog/designing-headline-variants</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/editorial-and-blog/improving-readability-and-flow" class="skill-item">
+          <h3>Improving Readability and Flow</h3>
+          <span class="skill-path">skills/editorial-and-blog/improving-readability-and-flow</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research & Insights -->
+  <section class="category-section" id="research-and-insights">
+    <div class="container">
+      <div class="category-header">
+        <h2>Research & Insights <span class="count">8 skills</span></h2>
+        <p>User research synthesis, feedback extraction, audit reports, and opportunity mapping</p>
+      </div>
+      <div class="skills-list">
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/synthesizing-user-research" class="skill-item">
+          <h3>Synthesizing User Research</h3>
+          <span class="skill-path">skills/research-and-insights/synthesizing-user-research</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/extracting-insights-from-feedback" class="skill-item">
+          <h3>Extracting Insights from Feedback</h3>
+          <span class="skill-path">skills/research-and-insights/extracting-insights-from-feedback</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/structuring-content-audit-reports" class="skill-item">
+          <h3>Structuring Content Audit Reports</h3>
+          <span class="skill-path">skills/research-and-insights/structuring-content-audit-reports</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/writing-research-summaries" class="skill-item">
+          <h3>Writing Research Summaries</h3>
+          <span class="skill-path">skills/research-and-insights/writing-research-summaries</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/mapping-qualitative-to-quantitative" class="skill-item">
+          <h3>Mapping Qualitative to Quantitative</h3>
+          <span class="skill-path">skills/research-and-insights/mapping-qualitative-to-quantitative</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/designing-interview-guides" class="skill-item">
+          <h3>Designing Interview Guides</h3>
+          <span class="skill-path">skills/research-and-insights/designing-interview-guides</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/analyzing-survey-results" class="skill-item">
+          <h3>Analyzing Survey Results</h3>
+          <span class="skill-path">skills/research-and-insights/analyzing-survey-results</span>
+        </a>
+        <a href="https://github.com/jeremydhoover-blip/hoover-content-system/tree/main/skills/research-and-insights/creating-content-opportunity-maps" class="skill-item">
+          <h3>Creating Content Opportunity Maps</h3>
+          <span class="skill-path">skills/research-and-insights/creating-content-opportunity-maps</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Hoover Content System (HCS) is <a href="https://github.com/jeremydhoover-blip/hoover-content-system">open source</a> under MIT license.</p>
+      <p>Built by Jeremy Hoover</p>
+    </div>
+  </footer>
+
+  <!-- Floating GitHub Button -->
+  <a href="https://github.com/jeremydhoover-blip/hoover-content-system" class="floating-github" id="floatingGithub" title="View on GitHub" aria-label="View on GitHub">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Floating GitHub button visibility on scroll
+    const floatingGithub = document.getElementById('floatingGithub');
+    const heroSection = document.querySelector('.hero');
+    
+    function toggleFloatingButton() {
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      if (window.scrollY > heroBottom - 100) {
+        floatingGithub.classList.add('visible');
+      } else {
+        floatingGithub.classList.remove('visible');
+      }
+    }
+    
+    window.addEventListener('scroll', toggleFloatingButton);
+    toggleFloatingButton(); // Check initial state
+  </script>
+
+</body>
+</html>
