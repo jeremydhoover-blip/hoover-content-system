@@ -727,36 +727,47 @@
 
     /* Responsive */
     @media (max-width: 600px) {
-      /* Mobile Navigation */
+      /* Mobile Navigation - Clean, minimal design */
       .top-nav {
-        padding: 10px 0;
+        padding: 12px 0;
       }
       .top-nav .container {
         flex-wrap: wrap;
         justify-content: center;
       }
       .top-nav .nav-links {
-        display: grid;
-        grid-template-columns: repeat(4, auto);
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 4px 8px;
+        align-items: center;
+        gap: 0;
         width: 100%;
       }
+      /* Hide secondary nav items on mobile */
+      .top-nav .nav-links a[href="#problem"],
+      .top-nav .nav-links a[href="#content-context"],
+      .top-nav .nav-links a[href="#how-it-works"] {
+        display: none;
+      }
       .top-nav a {
-        font-size: 0.75rem;
-        padding: 4px 8px;
-        border-right: none;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        border-right: 1px solid rgba(255,255,255,0.3);
         border-left: none;
         text-align: center;
       }
+      .top-nav .nav-links a:last-child {
+        border-right: none;
+      }
       .top-nav .linkedin-link {
-        padding: 4px 8px;
+        padding: 8px 12px;
         border-left: none;
+        border-right: none;
         justify-content: center;
       }
       .top-nav .linkedin-link svg {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
       }
 
       .hero h1 { font-size: 2rem; }
