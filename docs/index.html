@@ -729,32 +729,34 @@
     @media (max-width: 600px) {
       /* Mobile Navigation */
       .top-nav {
-        padding: 12px 0;
+        padding: 10px 0;
       }
       .top-nav .container {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 8px;
       }
       .top-nav .nav-links {
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
         justify-content: center;
-        gap: 4px 0;
+        gap: 4px 8px;
         width: 100%;
       }
       .top-nav a {
-        font-size: 0.8rem;
-        padding: 6px 12px;
+        font-size: 0.75rem;
+        padding: 4px 8px;
         border-right: none;
         border-left: none;
+        text-align: center;
       }
       .top-nav .linkedin-link {
-        padding: 6px 12px;
+        padding: 4px 8px;
         border-left: none;
+        justify-content: center;
       }
       .top-nav .linkedin-link svg {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
       }
 
       .hero h1 { font-size: 2rem; }
